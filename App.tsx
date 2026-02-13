@@ -1,14 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { LayoutDashboard, CarFront, Landmark, ChevronLeft, ChevronRight, Key, Wrench, Package, History } from 'lucide-react';
-import { Car, CarStatus, AppState, OperationalExpense, Rental, Product, ServiceOrder, VehicleType, HistoryEntry } from './types';
-import { DEFAULT_REPAIR_CHECKLIST } from './constants';
-import Dashboard from './components/Dashboard';
-import Inventory from './components/Inventory';
-import OperationalCosts from './components/OperationalCosts';
-import RentalManagement from './components/RentalManagement';
-import WorkshopAndStore from './components/WorkshopAndStore';
-import HistoryLog from './components/HistoryLog';
+import { Car, CarStatus, AppState, OperationalExpense, Rental, Product, ServiceOrder, VehicleType, HistoryEntry } from './types.ts';
+import { DEFAULT_REPAIR_CHECKLIST } from './constants.ts';
+import Dashboard from './components/Dashboard.tsx';
+import Inventory from './components/Inventory.tsx';
+import OperationalCosts from './components/OperationalCosts.tsx';
+import RentalManagement from './components/RentalManagement.tsx';
+import WorkshopAndStore from './components/WorkshopAndStore.tsx';
+import HistoryLog from './components/HistoryLog.tsx';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'dashboard' | 'inventory' | 'expenses' | 'rentals' | 'workshop' | 'history'>('dashboard');
@@ -37,7 +37,7 @@ const App: React.FC = () => {
       description,
       type
     };
-    setState(prev => ({ ...prev, history: [newLog, ...prev.history].slice(0, 500) })); // Mantém os últimos 500 logs
+    setState(prev => ({ ...prev, history: [newLog, ...prev.history].slice(0, 500) })); 
   };
 
   const addCar = (newCar: Omit<Car, 'id' | 'repairs' | 'status' | 'purchaseDate'>) => {
